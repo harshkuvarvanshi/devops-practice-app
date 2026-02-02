@@ -1,0 +1,23 @@
+name: Basic CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+
+      - name: Show Files
+        run: ls -la
+
+      - name: Check HTML
+        run: |
+          if [ ! -f index.html ]; then
+            exit 1
+          fi
